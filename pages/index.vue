@@ -8,7 +8,7 @@
                     class="mt-16"
                 >
                     <div class="text-h6 font-weight-light text-uppercase text-center grey--text">Besoin d'un mécanicien ?</div>
-                    <div class="text-h1 text-center font-weight-bold mt-5 logo-font"><span class="red-text">ACH</span> AUTO</div>
+                    <div class="text-h1 text-center font-weight-bold mt-5 logo-font logo-text">ACH AUTO</div>
                     <div class="text-h2 text-center font-weight-medium mt-2">Maintenance de véhicule automobiles</div>
                 </v-col>
                 <v-col
@@ -167,5 +167,61 @@
 <script>
 export default {
   name: 'IndexPage',
+  data() {
+    return {
+      logo: {
+        rotate: 360,
+        duration: 3000,
+        loop: false,
+      }
+    }
+  },
+  mounted () {
+    // Wrap every letter in a span
+    let textWrapper = document.querySelector('.logo-text');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    let letters = document.querySelectorAll('.letter');
+
+    this.$anime({
+        targets: '.letter',
+        opacity: 0,
+        duration: 0,
+        easing: "easeOutExpo",
+        delay: 0
+      });
+
+    setTimeout(() => {
+      let tl = this.$anime.timeline({
+        duration: 1200,
+      });
+
+      tl.add({
+      easing: 'easeOutExpo',
+      targets: '.logo-text .letter',
+      scale: [4,1],
+      opacity: [0,1],
+      duration: 800,
+      delay: (el, i) => 100*i
+      })
+      .add({
+      targets: [letters[0], letters[1], letters[2]],
+      color: ['#ffffff', '#d40000'],
+      scale: [1.3,1],
+      easing: "easeInQuint",
+      duration: 400,
+      })
+      ;
+    }, 600);
+
+
+
+  },
 }
 </script>
+
+<style lang="scss">
+.logo-text .letter {
+    display: inline-block;
+    line-height: 1em;
+}
+</style>
