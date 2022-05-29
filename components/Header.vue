@@ -15,6 +15,7 @@
                 contain
                 height="90"
                 position="absolute"
+                @click="$nuxt.$options.router.push('/')"
             ></v-img>
             <v-btn
                 class="header_menu_item"
@@ -57,10 +58,10 @@ export default {
 <style lang="scss">
 .header_menu_item {
     .v-btn__content {
-        font-family: 'Khand', sans-serif !important;
-        font-size: 1.5rem;
+        font-family: 'Work Sans', sans-serif !important;
+        font-size: 1.3rem;
         text-transform: capitalize;
-        letter-spacing: 2px;
+        letter-spacing: 0;
     }
 }
 </style>
