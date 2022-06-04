@@ -25,7 +25,7 @@
                 <v-col cols="12">
                     <v-row>
                         <v-col
-                            data-aos="fade-up"
+                            data-aos="zoom-out-up"
                             cols="12"
                             md="4"
                         >
@@ -44,7 +44,7 @@
 
                         </v-col>
                         <v-col
-                            data-aos="fade-up"
+                            data-aos="zoom-out-up"
                             data-aos-delay="100"
                             cols="12"
                             md="8"

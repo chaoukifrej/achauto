@@ -26,6 +26,8 @@
                     preserveAspectRatio="xMidYMid meet"
                     id="svg100"
                     v-anime="logoAnime"
+                    @click="$nuxt.$options.router.push('/')"
+                    style="cursor:pointer"
                 >
                     <defs id="defs104">
                         <rect
@@ -67,6 +69,7 @@
                 large
                 plain
                 :to="menuItem.to"
+                v-anime="menuItemAnime"
             >
                 {{ menuItem.text }}
             </v-btn>
@@ -93,23 +96,30 @@ export default {
         },
       ],
       logoAnime: {
-        scale: [1, 1.1, 1],
-        duration: 500,
+        scale: [1, 1.5, 1],
+        duration: 600,
         easing: 'easeInOutQuad',
-
       },
       logoAnime1: {
         opacity: [0, 1],
         fill: ['#d40000', '#ffffff'],
-        duration: 600,
+        duration: 800,
         loop: false,
         easing: 'easeInOutQuad',
       },
       logoAnime2: {
         opacity: [0, 1],
         fill: ['#d40000', '#ffffff', '#d40000'],
-        duration: 600,
+        duration: 800,
         delay: 200,
+        loop: false,
+        easing: 'easeInOutQuad',
+      },
+      menuItemAnime: {
+        opacity: [0, 1],
+        translateY: [-100, 0],
+        duration: 600,
+        delay: 100,
         loop: false,
         easing: 'easeInOutQuad',
       },
