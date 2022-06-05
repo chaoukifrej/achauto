@@ -34,7 +34,7 @@
             v-else
         >
             <Logo
-                height="auto"
+                height="100%"
                 width="64pt"
             />
             <v-spacer></v-spacer>

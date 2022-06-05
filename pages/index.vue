@@ -5,18 +5,18 @@
                 <v-col
                     data-aos="fade-up"
                     cols="12"
-                    class="mt-16"
+                    class="mt-0 mt-sm-16"
                 >
                     <div class="text-h6 font-weight-light text-uppercase text-center grey--text">Besoin d'un mécanicien ?</div>
-                    <div class="text-h1 text-center font-weight-bold mt-5 logo-font logo-text">ACH AUTO</div>
-                    <div class="text-h2 text-center font-weight-medium mt-2">Maintenance de véhicule automobiles</div>
+                    <div :class="[$vuetify.breakpoint.smAndDown ?'text-h2' : 'text-h1', 'text-center font-weight-bold mt-5 logo-font logo-text']">ACH AUTO</div>
+                    <div :class="[$vuetify.breakpoint.smAndDown ?'text-h4' : 'text-h2','text-center font-weight-medium mt-2']">Maintenance de véhicule automobiles</div>
                 </v-col>
                 <v-col
                     data-aos="fade-up"
                     cols="12"
-                    class="mt-10"
+                    class="mt-0 mt-sm-10"
                 >
-                    <div class="text-h4 text-center mt-16 grey--text text--lighten-2">Nous pouvons repondre à tous vos besoins <br> en ce qui concerne la mécanique générale <br> de toutes marques de véhicules</div>
+                    <div class="text-h4 text-center mt-0 mt-sm-16 grey--text text--lighten-2">Nous pouvons repondre à tous vos besoins <br> en ce qui concerne la mécanique générale <br> de toutes marques de véhicules</div>
                 </v-col>
             </v-row>
         </v-container>
@@ -220,8 +220,10 @@ export default {
 </script>
 
 <style lang="scss">
-.logo-text .letter {
-    display: inline-block;
-    line-height: 1em;
+.logo-text {
+    .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
 }
 </style>
