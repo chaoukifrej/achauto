@@ -1,32 +1,34 @@
 <template>
     <div>
+
         <v-app-bar
             app
             flat
             height="150"
-            width="100vw"
             color="#121212"
             v-if="!$vuetify.breakpoint.smAndDown"
         >
-            <div>
+            <v-container class="d-flex align-center">
                 <Logo />
-            </div>
-            <v-spacer></v-spacer>
-            <v-btn
-                class="header_menu_item"
-                v-for="(menuItem,idx) in menuItems"
-                :key="idx"
-                text
-                large
-                plain
-                :to="menuItem.to"
-                v-anime="menuItemAnime"
-            >
-                {{ menuItem.text }}
-            </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn
+                    class="header_menu_item"
+                    v-for="(menuItem,idx) in menuItems"
+                    :key="idx"
+                    text
+                    large
+                    plain
+                    :to="menuItem.to"
+                    v-anime="menuItemAnime"
+                >
+                    {{ menuItem.text }}
+                </v-btn>
+            </v-container>
+
         </v-app-bar>
         <v-app-bar
             app
+            bottom
             flat
             height="64"
             width="100vw"
@@ -35,34 +37,22 @@
         >
             <Logo
                 height="100%"
-                width="64pt"
+                width="60px"
             />
             <v-spacer></v-spacer>
-            <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+            <v-btn
+                class="header_menu_item"
+                v-for="(menuItem,idx) in menuItems"
+                :key="idx"
+                text
+                plain
+                :to="menuItem.to"
+                v-anime="menuItemAnime"
+            >
+                <v-icon large>{{menuItem.icon}}</v-icon>
+            </v-btn>
         </v-app-bar>
 
-        <v-navigation-drawer
-            v-model="drawer"
-            absolute
-            temporary
-            right
-        >
-            <v-list>
-                <v-list-item
-                    v-for="(menuItem,idx) in menuItems"
-                    :key="idx"
-                    :to="menuItem.to"
-                    @click="drawer = false"
-                >
-                    <v-list-item-icon>
-                        <v-icon v-text="menuItem.icon"></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                        <v-list-item-title v-text="menuItem.text"></v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
     </div>
 
 </template>
@@ -86,7 +76,7 @@ export default {
         {
           text: 'Contact',
           to: '/contact',
-          icon: 'mdi-account-box'
+          icon: 'mdi-card-account-details'
         },
       ],
 

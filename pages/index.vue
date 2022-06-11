@@ -1,6 +1,6 @@
 <template>
     <div id="home">
-        <v-container class="mt-16 hero_container">
+        <v-container class="mt-4 mt-sm-16 hero_container">
             <v-row>
                 <v-col
                     data-aos="fade-up"
@@ -18,6 +18,20 @@
                 >
                     <div class="text-h4 text-center mt-0 mt-sm-16 grey--text text--lighten-2">Nous pouvons repondre à tous vos besoins <br> en ce qui concerne la mécanique générale <br> de toutes marques de véhicules</div>
                 </v-col>
+                <v-col
+                    v-if="$vuetify.breakpoint.smAndDown"
+                    data-aos="fade-up"
+                    cols="12"
+                    class="text-center"
+                >
+                    <v-btn
+                        class="mt-6"
+                        color="#d40000"
+                        dark
+                        large
+                        to="/contact"
+                    >Nous contacter</v-btn>
+                </v-col>
             </v-row>
         </v-container>
         <v-container class="my-16">
@@ -29,11 +43,9 @@
                             cols="12"
                             md="4"
                         >
-                            <v-card
-                                shaped
-                                color="transparent"
-                            >
+                            <v-card color="transparent">
                                 <v-img
+                                    :class="{'rounded-l-xl': !$vuetify.breakpoint.smAndDown}"
                                     :src="require('@/assets/img/achportrait.jpg')"
                                     height="500"
                                 ></v-img>
@@ -41,7 +53,6 @@
                                     Votre expert en mécanique automobile
                                 </v-card-title>
                             </v-card>
-
                         </v-col>
                         <v-col
                             data-aos="zoom-out-up"
@@ -51,6 +62,7 @@
                         >
                             <v-card color="transparent">
                                 <v-img
+                                    :class="{'rounded-r-xl': !$vuetify.breakpoint.smAndDown}"
                                     :src="require('@/assets/img/achportrait.jpg')"
                                     height="500"
                                 ></v-img>
@@ -59,7 +71,6 @@
                                 </v-card-title>
                             </v-card>
                         </v-col>
-
                     </v-row>
                 </v-col>
             </v-row>
@@ -75,7 +86,7 @@
                         color="transparent"
                     >
                         <v-subheader
-                            data-aos="fade-right"
+                            :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-right'"
                             class="
                             text-h5
                             title-services
@@ -85,17 +96,17 @@
                         </v-subheader>
 
                         <div
-                            data-aos="fade-right"
+                            :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-right'"
                             data-aos-delay="100"
                             class="text-services mb-4"
                         >Nettoyage, réparation et remplacement des pièces et mécanismes en panne,</div>
                         <div
-                            data-aos="fade-right"
+                            :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-right'"
                             data-aos-delay="200"
                             class="text-services mb-4"
                         >Contrôle, dépannage et amélioration du rendement,</div>
                         <div
-                            data-aos="fade-right"
+                            :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-right'"
                             data-aos-delay="300"
                             class="text-services mb-4"
                         >Diagnostics, recherche de pannes, electronique...</div>
@@ -104,7 +115,7 @@
                 <v-col
                     cols="12"
                     md="4"
-                    data-aos="fade-left"
+                    :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-left'"
                 >
                     <v-card
                         flat
@@ -115,17 +126,17 @@
                         </v-subheader>
 
                         <div
-                            data-aos="fade-left"
+                            :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-left'"
                             data-aos-delay="100"
                             class="text-atouts mb-3"
                         >Polyvalence et rigueur</div>
                         <div
-                            data-aos="fade-left"
+                            :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-left'"
                             data-aos-delay="200"
                             class="text-atouts mb-3"
                         >À l'écoute du client,</div>
                         <div
-                            data-aos="fade-left"
+                            :data-aos="$vuetify.breakpoint.smAndDown ? 'fade-up' :'fade-left'"
                             data-aos-delay="300"
                             class="text-atouts mb-3"
                         >Respect des processus et de votre véhicule</div>
@@ -160,7 +171,6 @@
                 </v-col>
             </v-row>
         </v-container>
-
     </div>
 </template>
 
@@ -212,9 +222,6 @@ export default {
       })
       ;
     }, 600);
-
-
-
   },
 }
 </script>
