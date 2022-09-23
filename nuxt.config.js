@@ -3,6 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -34,7 +35,22 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     'nuxt-animejs',
+    'nuxt-gsap-module',
   ],
+
+  gsap: {
+    /* Module Options */
+    extraPlugins: {
+      scrollTo: true,
+      scrollTrigger: true,
+      observer: true,
+      text: true,
+      attr: true,
+    },
+    extraEases: {
+      expoScaleEase: true,
+    },
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
@@ -43,7 +59,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,

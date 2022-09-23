@@ -14,6 +14,7 @@
   "dependencies": {
     "aos": "^2.3.4",
     "core-js": "^3.19.3",
+    "gsap": "npm:@gsap/member@^3.11.1",
     "nuxt": "^2.15.8",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
@@ -25,6 +26,7 @@
     "@nuxtjs/vuetify": "^1.12.3",
     "eslint-config-prettier": "^8.3.0",
     "nuxt-animejs": "^1.2.3",
+    "nuxt-gsap-module": "^1.7.2",
     "prettier": "^2.5.1",
     "sass": "^1.52.1",
     "sass-loader": "^10.2.1"

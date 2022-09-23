@@ -5,6 +5,8 @@ $font-family: 'Work Sans';
   font-family: 'Work Sans', sans-serif !important;
 }
 
+$redColor: #d40000;
+
 body {
   overflow-x: hidden;
 }
@@ -16,40 +18,173 @@ body {
   font-family: $font-family, sans-serif !important;
 }
 
-.container--fluid {
-  max-width: 96% !important;
-}
-
 .red-text {
-  color: #d40000;
+  color: $redColor;
 }
 .v-application a {
-  color: #d40000;
+  color: $redColor;
   font-family: 'Ubuntu' !important;
   text-decoration: none;
 }
+#cursor_ball {
+  width: 20px;
+  height: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(102, 102, 102, 0.335);
+  border-radius: 50%;
+  pointer-events: none;
+}
 #home {
-  .hero_container {
-    min-height: 70vh;
-    @media screen and (max-width: 960px) {
-      min-height: 90vh;
+  .first_section {
+    z-index: 100;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(120deg, #16141c, #09080b);
+    color: #edf1f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(50px + 5%) 0;
+    .first_container {
+      width: 70%;
+      z-index: 10;
+      .welcome {
+        pointer-events: none;
+        font-weight: 700;
+        user-select: none;
+        -moz-user-select: none;
+        width: calc(150px + 25 * (100vw - 320px) / 1080);
+        height: calc(150px + 25 * (100vw - 320px) / 1080);
+      }
+      .h1-text {
+        font-weight: 400;
+        font-size: 18px;
+      }
+      .welcome_text {
+        min-height: 325px;
+        font-size: calc(18px + 50 * (100vw - 320px) / 1080);
+        font-weight: 800;
+        line-height: 1.2;
+        white-space: nowrap;
+        margin-top: 8px;
+        margin-bottom: calc(4px + 4%);
+        overflow: hidden;
+        position: relative;
+        .welcome_text_transform {
+          background: linear-gradient(to right, #d40000, #e81a1a);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+      .split-parent {
+        overflow: hidden;
+      }
+      .split-child {
+        display: inline-block;
+      }
+      .welcome_btn {
+        align-self: start;
+      }
+    }
+    .second_container {
+      pointer-events: none;
+      position: absolute;
+      right: 4px;
+      width: 50%;
+      height: 50%;
+      top: 35%;
+      transform: translateY(-50%);
+      z-index: 0;
+      background-image: url(~/assets/img/hero_about.svg);
+      background-size: contain;
+      opacity: 0.5;
+    }
+  }
+  .second_section {
+    .first_container,
+    .second_container {
+      height: 100vh;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-    }
-    @media screen and (max-width: 352px) {
-      .logo-font {
-        font-size: 3em !important;
+      padding-right: 50%;
+      padding-left: 15%;
+      h3 {
+        color: #16141c;
+        span {
+          color: #16141c;
+          font-size: 34px;
+          font-weight: 300;
+          line-height: 36px;
+        }
+        strong {
+          font-size: 40px;
+          font-weight: 700;
+        }
       }
-      .text-h4 {
-        font-size: 1.5rem !important;
+      .text_info {
+        font-size: calc(14px + 2 * (100vw - 320px) / 1080);
+        width: 80%;
+        line-height: 1.8;
+        margin: calc(20px + 5%) 0;
+        color: #666;
+        letter-spacing: 0.25px;
+      }
+      .v-btn {
+        align-self: start;
       }
     }
-    .logo-font {
-      font-family: 'Ubuntu', sans-serif !important;
+    .second_container {
+      background: linear-gradient(120deg, #16141c, #09080b);
+      h3 {
+        color: #ffffff;
+        span {
+          color: #fbfbfb;
+        }
+      }
+      .text_info {
+        color: rgb(181, 181, 181);
+      }
     }
   }
+  .third_section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .portrait_container {
+      width: 70%;
+      h2 {
+        font-size: 100px;
+        line-height: 80px;
+      }
+      .subheading {
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+  }
+  .fourth_section {
+    height: 60vh;
+    width: 100%;
+    background: linear-gradient(to right, #d40000, #eb3333);
+    display: flex;
+    color: #fbfbfb;
+    h2 {
+      font-size: 60px;
+      font-weight: 300;
+    }
+    .subheading {
+      font-size: 30px;
+      font-weight: 700;
+    }
+  }
+
   .title-services {
     font-family: 'Ubuntu', sans-serif !important;
     font-size: 1.4rem;
@@ -63,7 +198,7 @@ body {
   .text-atouts {
     font-size: 1.6rem;
     font-weight: 500;
-    color: #d40000;
+    color: $redColor;
   }
   .text-contact-me {
     font-size: 1.6rem;
