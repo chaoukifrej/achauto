@@ -81,29 +81,122 @@ export default {
     css: false,
 
     beforeEnter(el) {
-      this.$anime.set(el, {
+      /* this.$anime.set(el, {
         opacity: 0,
-      })
+      }) */
+      /* this.$gsap.set(el, {
+        opacity: 0,
+      }) */
+
+      console.log(el)
+      const black_transition = document.createElement('div')
+      black_transition.classList.add('black-transition')
+      black_transition.style.position = 'absolute'
+      black_transition.zIndex = 5
+      black_transition.style.left = 0
+      black_transition.style.top = 0
+      black_transition.style.height = '100vh'
+      black_transition.style.width = '100vw'
+      black_transition.style.background = '#000'
+
+      el.appendChild(black_transition)
+
+      const red_transition = document.createElement('div')
+      red_transition.classList.add('red_transition')
+      red_transition.style.position = 'absolute'
+      red_transition.zIndex = 5
+      red_transition.style.left = 0
+      red_transition.style.top = 0
+      red_transition.style.height = '100vh'
+      red_transition.style.width = '100vw'
+      red_transition.style.background = '#d40000'
+
+      el.appendChild(red_transition)
+
+      const logo_transition = document.createElement('div')
+      logo_transition.classList.add('logo_transition')
+      logo_transition.innerHTML = 'ACH AUTO'
+      logo_transition.style.textTransform = 'uppercase'
+      logo_transition.style.fontSize = '60px'
+      logo_transition.style.color = 'white'
+      logo_transition.style.position = 'absolute'
+      logo_transition.style.zIndex = 6
+      logo_transition.style.top = '50vh'
+      logo_transition.style.left = '50vw'
+      logo_transition.style.height = '100vh'
+      logo_transition.style.transform = 'translate(-50%,-50%)'
+
+      el.appendChild(logo_transition)
+
+      this.$gsap
+        .timeline()
+        .fromTo(
+          red_transition,
+          { scaleX: 0 },
+          { scaleX: 1, transformOrigin: 'left', ease: 'Power4.easeInOut' }
+        )
+        .fromTo(
+          black_transition,
+          { scaleX: 0 },
+          { scaleX: 1, transformOrigin: 'left', ease: 'Power4.easeInOut' },
+          0.2
+        )
+        .fromTo(
+          logo_transition,
+          { xPercent: -100, autoAlpha: 0 },
+          { xPercent: 0, autoAlpha: 1, ease: 'Power4.easeInOut' },
+          0.7
+        )
+        .set(red_transition, { scaleX: 0 })
+        .to(black_transition, {
+          scaleX: 0,
+          transformOrigin: 'right',
+          ease: 'Power4.easeInOut',
+        })
+        .to(logo_transition, 0.2, { autoAlpha: 0 }, '-=1.2')
     },
 
     enter(el, done) {
-      this.$anime({
+      /* this.$anime({
         targets: el,
         opacity: [0, 1],
         duration: 500,
         easing: 'easeInOutSine',
         complete: done,
-      })
+      }) */
+      /* this.$gsap.to(el, {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onComplete: done,
+      }) */
+      /* this.$gsap.fromTo(
+        newDiv,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          backgroundColor: 'unset',
+          transformOrigin: 'top',
+          ease: 'Power4.easeInOut',
+          duration: 1,
+        }
+      ) */
     },
 
     leave(el, done) {
-      this.$anime({
+      /* this.$anime({
         targets: el,
         opacity: [1, 0],
         duration: 500,
         easing: 'easeInOutSine',
         complete: done,
-      })
+      }) */
+      /* this.$gsap.to(el, {
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onComplete: done,
+      }) */
     },
   },
 
