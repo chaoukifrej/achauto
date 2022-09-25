@@ -59,15 +59,19 @@ body {
         width: calc(150px + 25 * (100vw - 320px) / 1080);
         height: calc(150px + 25 * (100vw - 320px) / 1080);
       }
-      .h1-text {
-        font-weight: 400;
-        font-size: 18px;
+      .wrapper {
+        overflow: hidden;
+      }
+      .welcome_title {
+        font-weight: 300;
+        font-size: 20px;
+        padding-bottom: 20px;
       }
       .welcome_text {
         min-height: 325px;
-        font-size: calc(18px + 50 * (100vw - 320px) / 1080);
-        font-weight: 800;
-        line-height: 1.2;
+        font-size: 6rem;
+        font-weight: 700;
+        line-height: 1;
         white-space: nowrap;
         margin-top: 8px;
         margin-bottom: calc(4px + 4%);
@@ -87,7 +91,7 @@ body {
       }
       .welcome_btn {
         align-self: start;
-        opacity: 0;
+        // opacity: 0;
       }
     }
     .second_container {

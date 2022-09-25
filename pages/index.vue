@@ -22,15 +22,23 @@
             </text>
           </svg>
         </div>
-        <h1 class="h1-text text-uppercase mt-3">
-          Maintenance de véhicule automobiles dans le Var
-        </h1>
+        <div class="wrapper">
+          <h1 class="welcome_title h1-text text-uppercase mt-3">
+            Maintenance de véhicule automobiles dans le Var
+          </h1>
+        </div>
         <div class="welcome_text">
-          <div class="one"></div>
-          <div class="two"></div>
-          <div class="three">
-            <span class="first"></span>
-            <span class="second welcome_text_transform"></span>
+          <div class="wrapper">
+            <div class="one">Le mécanicien</div>
+          </div>
+          <div class="wrapper">
+            <div class="two">que vous attendiez,</div>
+          </div>
+          <div class="wrapper">
+            <div class="three">
+              pour
+              <span class="welcome_text_transform"> votre véhicule</span>
+            </div>
           </div>
         </div>
         <v-btn class="welcome_btn" color="#d40000" dark large to="/contact"
@@ -54,9 +62,7 @@
               de pannes , electronique...
             </p>
           </div>
-          <v-btn class="welcome_btn" color="#d40000" dark large to="/about"
-            >En savoir plus</v-btn
-          >
+          <v-btn color="#d40000" dark large to="/about">En savoir plus</v-btn>
         </div>
       </div>
       <div class="second_container">
@@ -74,9 +80,7 @@
             et de votre véhicule.
           </p>
         </div>
-        <v-btn class="welcome_btn" color="#d40000" dark large to="/about"
-          >En savoir plus</v-btn
-        >
+        <v-btn color="#d40000" dark large to="/about">En savoir plus</v-btn>
       </div>
     </section>
     <section class="third_section">
@@ -127,63 +131,11 @@ export default {
   },
   methods: {
     animateOnEnter() {
-      let tl = this.$gsap.timeline()
-      const textEase = 'none'
-
-      this.$gsap.set('.welcome_btn', { opacity: 0, yPercent: 150 })
-
-      tl.to('.welcome_text .one', {
-        duration: 1,
-        text: {
-          value: 'Le mécanicien',
-        },
-        ease: textEase,
-      })
-        .to(
-          '.welcome_text .two',
-          {
-            duration: 1,
-            text: {
-              value: 'que vous attendiez,',
-            },
-            ease: textEase,
-          },
-          '>-0.5'
-        )
-        .to(
-          '.welcome_text .three .first',
-          {
-            duration: 1,
-            text: {
-              value: 'pour ',
-              speed: 1,
-            },
-            ease: textEase,
-          },
-          '>-0.5'
-        )
-        .to(
-          '.welcome_text .three .second',
-          {
-            duration: 1,
-            text: {
-              value: 'votre véhicule',
-            },
-            ease: textEase,
-          },
-          '>-0.8'
-        )
-        .to(
-          '.welcome_btn',
-          { opacity: 1, yPercent: 0, duration: 0.5, ease: 'power4.out' },
-          '>-1'
-        )
-    },
-    animateOnScroll() {
       this.$gsap.from('#welcome_to', {
         scale: 0,
         opacity: 0,
         duration: 3,
+        delay: 0.8,
         ease: 'elastic.out(1, 0.3)',
       })
       this.$gsap.to('#welcome_to', {
@@ -193,6 +145,55 @@ export default {
         repeat: -1,
       })
 
+      let tl = this.$gsap.timeline().delay(1)
+
+      tl.fromTo(
+        '.welcome_title',
+        { yPercent: 101 },
+        { yPercent: 0, duration: 0.25 }
+      )
+        .fromTo(
+          '.one',
+          { yPercent: 101 },
+          { yPercent: 0, duration: 0.25 },
+          '>-0.1'
+        )
+        .fromTo(
+          '.two',
+          { yPercent: 101 },
+          { yPercent: 0, duration: 0.25 },
+          '>-0.1'
+        )
+        .fromTo(
+          '.three',
+          { yPercent: 101 },
+          { yPercent: 0, duration: 0.25 },
+          '>-0.1'
+        )
+    },
+    animateOnScroll() {
+      this.$Observer.create({
+        target: window,
+        type: 'scroll',
+        onChange: (self) => {
+          const container = document.querySelector('.first_container')
+
+          let scrollPercent =
+            (self.target.scrollY / self.target.innerHeight) * 100
+
+          container.style.transform = `translateY(-${scrollPercent * 2}px)`
+          container.style.opacity = 1 - scrollPercent / 100
+          /* if (
+            (self.target.scrollY + 75 > self.target.innerHeight &&
+              self.target.scrollY + 75 < self.target.innerHeight * 2) ||
+            self.target.scrollY + 75 > self.target.innerHeight * 3
+          ) {
+            container.style.fill = '#000000'
+          } else {
+            container.style.fill = '#ffffff'
+          } */
+        },
+      })
       //this.$gsap.to(window, { duration: 2, scrollTo: 1000 })
       /* this.$gsap.from('#our_services', {
         y: 500,

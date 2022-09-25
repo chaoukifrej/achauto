@@ -97,12 +97,6 @@ export default {
           } else {
             path.style.fill = '#ffffff'
           }
-          console.log(
-            'height:',
-            self.target.innerHeight,
-            'scrollY:',
-            self.target.scrollY
-          )
         },
       })
     },
