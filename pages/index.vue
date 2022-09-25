@@ -2,7 +2,10 @@
   <div id="home">
     <div id="cursor_ball"></div>
     <section class="first_section">
-      <div class="first_container d-flex flex-column">
+      <div
+        class="first_container d-flex flex-column"
+        id="first_section_container"
+      >
         <div
           class="welcome"
           id="welcome_to"
@@ -45,42 +48,42 @@
           >Nous contacter</v-btn
         >
       </div>
-      <div class="second_container"></div>
+      <div class="second_container" id="first_section_illustration"></div>
     </section>
     <section class="second_section">
-      <div class="first_container">
-        <div id="our_services">
-          <h3>
-            <span>Nos services</span><br />
-            <strong>Mécanique automobile</strong>
-          </h3>
-          <div class="text_info">
-            <p>
-              Nettoyage, <strong> réparation</strong> et remplacement des pièces
-              et mécanismes en panne. <strong> Contrôle, dépannage</strong> et
-              amélioration du rendement. <strong>Diagnostics</strong>, recherche
-              de pannes , electronique...
-            </p>
-          </div>
-          <v-btn color="#d40000" dark large to="/about">En savoir plus</v-btn>
-        </div>
-      </div>
-      <div class="second_container">
+      <div class="our_services">
         <h3>
-          <span>Nos atouts</span><br />
+          <span>Nos services</span><br />
           <strong>Mécanique automobile</strong>
         </h3>
         <div class="text_info">
           <p>
-            <strong>La polyvalence et la rigueur</strong> dont nous faisons
-            preuve pour chacune des tâches qui nous confiées.
-            <strong>À votre écoute</strong>, nous prenons en compte
-            <strong>vos besoins</strong> et vous proposons les prix les plus
-            compétitifs. Toujours dans le <strong>respect</strong> des processus
-            et de votre véhicule.
+            Nettoyage, <strong> réparation</strong> et remplacement des pièces
+            et mécanismes en panne. <strong> Contrôle, dépannage</strong> et
+            amélioration du rendement. <strong>Diagnostics</strong>, recherche
+            de pannes , electronique...
           </p>
         </div>
         <v-btn color="#d40000" dark large to="/about">En savoir plus</v-btn>
+      </div>
+      <div class="our_assets_container">
+        <div class="our_assets">
+          <h3>
+            <span>Nos atouts</span><br />
+            <strong>Mécanique automobile</strong>
+          </h3>
+          <div class="text_info">
+            <p>
+              <strong>La polyvalence et la rigueur</strong> dont nous faisons
+              preuve pour chacune des tâches qui nous confiées.
+              <strong>À votre écoute</strong>, nous prenons en compte
+              <strong>vos besoins</strong> et vous proposons les prix les plus
+              compétitifs. Toujours dans le <strong>respect</strong> des
+              processus et de votre véhicule.
+            </p>
+          </div>
+          <v-btn color="#d40000" dark large to="/about">En savoir plus</v-btn>
+        </div>
       </div>
     </section>
     <section class="third_section">
@@ -172,36 +175,37 @@ export default {
         )
     },
     animateOnScroll() {
+      const container = document.querySelector('#first_section_container')
+      const illustration = document.querySelector('#first_section_illustration')
+      const ourServices = document.querySelector('.our_services')
+      const ourAssets = document.querySelector('.our_assets')
+
+      this.$gsap.set(ourServices, { opacity: 0 })
+      this.$gsap.set(ourAssets, { opacity: 0 })
+
       this.$Observer.create({
         target: window,
         type: 'scroll',
         onChange: (self) => {
-          const container = document.querySelector('.first_container')
-
           let scrollPercent =
             (self.target.scrollY / self.target.innerHeight) * 100
 
           container.style.transform = `translateY(-${scrollPercent * 2}px)`
           container.style.opacity = 1 - scrollPercent / 100
-          /* if (
-            (self.target.scrollY + 75 > self.target.innerHeight &&
-              self.target.scrollY + 75 < self.target.innerHeight * 2) ||
-            self.target.scrollY + 75 > self.target.innerHeight * 3
-          ) {
-            container.style.fill = '#000000'
-          } else {
-            container.style.fill = '#ffffff'
-          } */
+
+          illustration.style.transform = `translateX(${scrollPercent * 2}px)`
+
+          ourServices.style.opacity = scrollPercent / 100 - 0.2
+          ourAssets.style.opacity = scrollPercent / 2 / 100 - 0.2
+
+          console.log(scrollPercent / 100)
         },
       })
       //this.$gsap.to(window, { duration: 2, scrollTo: 1000 })
       /* this.$gsap.from('#our_services', {
-        y: 500,
-        opacity: 0.2,
+        opacity: 0,
         scrollTrigger: {
           trigger: '.second_section .first_container',
-          toggle_actions: 'restart pause reverse pause',
-          start: '-200%',
           scrub: 1,
           markers: true,
         },

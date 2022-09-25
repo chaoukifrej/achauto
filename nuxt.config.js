@@ -93,6 +93,8 @@ export default {
 
       // el.appendChild(black_transition)
 
+      document.body.classList.add('stop_scrolling')
+
       const red_transition = document.createElement('div')
       red_transition.classList.add('red_transition')
       red_transition.style.position = 'absolute'
@@ -112,11 +114,16 @@ export default {
 
       const logo_transition = document.createElement('div')
       logo_transition.classList.add('logo_transition')
-      logo_transition.innerHTML = 'Ach Auto'
+      /* logo_transition.innerHTML = 'Ach Auto'
       logo_transition.style.color = 'white'
       logo_transition.style.fontSize = '60px'
-      logo_transition.style.fontWeight = '500'
+      logo_transition.style.fontWeight = '500' */
 
+      const img = document.createElement('img')
+      img.src = require('@/assets/img/ach_auto.png')
+      img.height = 200
+
+      logo_transition.appendChild(img)
       red_transition.appendChild(logo_transition)
 
       this.$gsap
@@ -137,9 +144,13 @@ export default {
             transformOrigin: 'bottom',
             ease: 'expo.inOut',
             duration: 2,
+            onComplete: () => {
+              document.body.classList.remove('stop_scrolling')
+            },
           },
           '>-1'
         )
+
       // .fromTo(
       //   black_transition,
       //   { scaleY: 0 },
